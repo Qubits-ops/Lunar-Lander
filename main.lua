@@ -1,4 +1,6 @@
 
+music = love.audio.newSource("music1.mp3","stream")
+
 Vaisseau = {}
 Vaisseau.x = 0
 Vaisseau.y  = 0
@@ -38,7 +40,7 @@ function love.load()
 end
 
 function love.update(dt)
-  
+  love.audio.play(music)
   if love.keyboard.isDown("up") then
     engineIsOn = true
     
@@ -82,7 +84,9 @@ function love.update(dt)
   Vaisseau.y = Vaisseau.y + Vaisseau.vy
   if Vaisseau.y >= plateforme.y + plateforme.hauteur then
       print("bravo tu as atteint la plateforme")
+       --Vaisseau.vy = 0
  end
+
 end
 
 function love.draw()
@@ -92,8 +96,8 @@ function love.draw()
   love.graphics.print(sDebug,1,1)
   love.graphics.draw(Vaisseau.img,Vaisseau.x,Vaisseau.y,math.rad(Vaisseau.angle),1,1,Vaisseau.img:getWidth()/2,Vaisseau.img:getHeight()/2)
   if engineIsOn == true or engineIsOn2 == true then
-  love.graphics.draw(engine.img,Vaisseau.x,Vaisseau.y,math.rad(Vaisseau.angle),1,1,engine.img:getWidth()/2,engine.img:getHeight()/2)
+    love.graphics.draw(engine.img,Vaisseau.x,Vaisseau.y,math.rad(Vaisseau.angle),1,1,engine.img:getWidth()/2,engine.img:getHeight()/2)
   end
-love.graphics.rectangle("fill",plateforme.x,plateforme.y,plateforme.largeur,plateforme.hauteur)
+  love.graphics.rectangle("fill",plateforme.x,plateforme.y,plateforme.largeur,plateforme.hauteur)
 
 end
