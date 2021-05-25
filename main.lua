@@ -1,5 +1,5 @@
 
-music = love.audio.newSource("music1.mp3","stream")
+music = love.audio.newSource("music/music1.mp3","stream")
 
 Vaisseau = {}
 Vaisseau.x = 0
